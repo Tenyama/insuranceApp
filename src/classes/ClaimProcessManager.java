@@ -6,7 +6,11 @@ package classes;
 import java.util.Date;
 
 public class ClaimProcessManager {
-    public static void main(String[] args) {
-        Home.displayHomeScreen();
+    public void add(){
     }
+    public void update(){
+    }
+    public void delete(){}
+    public void getOne(){}
+    public void getAll(){}
 }
