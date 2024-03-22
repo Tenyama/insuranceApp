@@ -1,12 +1,24 @@
 package classes;
 
+import java.io.IOException;
 import java.util.List;
 
 public class Dependent extends Customer{
-    public Dependent() {
-    }
-    public Dependent(String id, String fullName, InsuranceCard card, List<Claim> listOfClaims) {
-        super(id, fullName, card, listOfClaims);
+    private PolicyHolder holder;
+
+    public Dependent(PolicyHolder holder) throws IOException {
+        super();
+        this.holder = holder;
     }
 
+    public Dependent(String fullName, InsuranceCard card, List<Claim> listOfClaims, PolicyHolder holder) throws IOException {
+        super(fullName, card, listOfClaims);
+        this.holder = holder;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + ", dependentList=null" +
+                ", holder='" + holder.getId() + "'";
+    }
 }

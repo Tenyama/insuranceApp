@@ -18,8 +18,11 @@ public class Claim {
   private String status;
   private String receiverBankingInfo;
 
+  public Claim() {
+  }
+
   public Claim(String id, Date claimDate, Customer insuredPerson, String cardNumber, Date examDate, List<String> documents, double claimAmount, String status, String receiverBankingInfo) {
-    this.id = id;
+    this.id = formatId(id);
     this.claimDate = claimDate;
     this.insuredPerson = insuredPerson;
     this.cardNumber = cardNumber;
@@ -30,12 +33,21 @@ public class Claim {
     this.receiverBankingInfo = receiverBankingInfo;
   }
 
+  public static String formatId(String number) {
+    // Padding with leading zeros if necessary
+    StringBuilder paddedNumber = new StringBuilder(number);
+    while (paddedNumber.length() < 10) {
+      paddedNumber.insert(0, "0");
+    }
+    return "f-" + paddedNumber.toString();
+  }
+
   public String getId() {
     return id;
   }
 
   public void setId(String id) {
-    this.id = id;
+    this.id = formatId(id);
   }
 
   public Date getClaimDate() {
@@ -100,5 +112,20 @@ public class Claim {
 
   public void setReceiverBankingInfo(String receiverBankingInfo) {
     this.receiverBankingInfo = receiverBankingInfo;
+  }
+
+  @Override
+  public String toString() {
+    return "Claim{" +
+            "id='" + id + '\'' +
+            ", claimDate=" + claimDate +
+            ", insuredPerson=" + insuredPerson +
+            ", cardNumber='" + cardNumber + '\'' +
+            ", examDate=" + examDate +
+            ", documents=" + documents +
+            ", claimAmount=" + claimAmount +
+            ", status='" + status + '\'' +
+            ", receiverBankingInfo='" + receiverBankingInfo + '\'' +
+            '}';
   }
 }

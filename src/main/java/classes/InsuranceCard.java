@@ -12,6 +12,8 @@ public class InsuranceCard {
   private String policyHolder;
   private Date expirationDate;
 
+  public InsuranceCard() {
+  }
   public InsuranceCard(String cardNumber, Customer cardHolder, String policyHolder, Date expirationDate) {
     this.cardNumber = cardNumber;
     this.cardHolder = cardHolder;
