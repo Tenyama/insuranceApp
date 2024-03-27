@@ -1,13 +1,15 @@
-package classes;
+package classes.Customer;
 
 /**
  * @author Le Thien Son - s3977955
  */
 
-import classes.Claim;
-
 import java.io.IOException;
 import java.util.List;
+
+import classes.Claim;
+import classes.InsuranceCard;
+import classes.fileManip.CustomerWriter;
 import classes.fileManip.MaxIdFinder;
 
 public abstract class Customer {
@@ -18,11 +20,11 @@ public abstract class Customer {
   private List<Claim> listOfClaims;
 
   public Customer() throws IOException {
-    this.id = formatId(MaxIdFinder.getMaxId(filePath) + 1);
+    this.id = formatId(MaxIdFinder.getMaxCustomerId(filePath) + 1);
   }
 
   public Customer(String fullName, InsuranceCard card, List<Claim> listOfClaims) throws IOException {
-    this.id = formatId(MaxIdFinder.getMaxId(filePath) + 1);
+    this.id = formatId(MaxIdFinder.getMaxCustomerId(filePath) + 1);
     this.fullName = fullName;
     this.card = card;
     this.listOfClaims = listOfClaims;

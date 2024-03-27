@@ -4,6 +4,8 @@ package classes;
  * @author Le Thien Son - s3977955
  */
 
+import classes.Customer.Customer;
+
 import java.util.Date;
 import java.util.List;
 

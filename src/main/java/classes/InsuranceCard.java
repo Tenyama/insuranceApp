@@ -4,27 +4,44 @@ package classes;
  * @author Le Thien Son - s3977955
  */
 
+import classes.Customer.Customer;
+import classes.fileManip.MaxIdFinder;
+import classes.fileManip.RandomNumberGenerator;
+
 import java.util.Date;
 
 public class InsuranceCard {
   private String cardNumber;
   private Customer cardHolder;
-  private String policyHolder;
+  private String policyOwner;
   private Date expirationDate;
-
+  private InsuranceCard(Builder builder) {
+    this.cardNumber = formatNumber(builder.cardNumber);
+    this.cardHolder = builder.cardHolder;
+    this.policyOwner = builder.policyOwner;
+    this.expirationDate = builder.expirationDate;
+  }
   public InsuranceCard() {
+    this.cardNumber = formatNumber(RandomNumberGenerator.randTen());
   }
-  public InsuranceCard(String cardNumber, Customer cardHolder, String policyHolder, Date expirationDate) {
-    this.cardNumber = cardNumber;
+  public InsuranceCard(Customer cardHolder, String policyOwner, Date expirationDate) {
+    this.cardNumber = formatNumber(RandomNumberGenerator.randTen());
     this.cardHolder = cardHolder;
-    this.policyHolder = policyHolder;
+    this.policyOwner = policyOwner;
     this.expirationDate = expirationDate;
   }
 
-  public InsuranceCard(String cardNumber, Customer cardHolder, Date expirationDate) {
-    this.cardNumber = cardNumber;
-    this.cardHolder = cardHolder;
-    this.expirationDate = expirationDate;
+  public static String formatNumber(long number) {
+    // Padding with leading zeros if necessary
+    return String.format("%010d", number);
+  }
+
+  @Override
+  public String toString() {
+    return "cardNumber=" + cardNumber +
+            ", cardHolder=" + cardHolder +
+            ", policyOwner=" + policyOwner +
+            ", expirationDate=" + expirationDate ;
   }
 
   public String getCardNumber() {
@@ -43,12 +60,8 @@ public class InsuranceCard {
     this.cardHolder = cardHolder;
   }
 
-  public String getPolicyHolder() {
-    return policyHolder;
-  }
-
-  public void setPolicyHolder(String policyHolder) {
-    this.policyHolder = policyHolder;
+  public String getPolicyOwner() {
+    return policyOwner;
   }
 
   public Date getExpirationDate() {
@@ -57,5 +70,37 @@ public class InsuranceCard {
 
   public void setExpirationDate(Date expirationDate) {
     this.expirationDate = expirationDate;
+  }
+  public static class Builder {
+    private long cardNumber = RandomNumberGenerator.randTen();
+    private Customer cardHolder;
+    private String policyOwner;
+    private Date expirationDate;
+
+    public Builder () {
+    }
+
+    ////////////////////////
+    //("Gotta add READER")//
+    ////////////////////////
+
+    public Builder cardHolder(String cardHolder) {
+      this.policyOwner = policyOwner;
+      return this;
+    }
+
+    public Builder policyOwner(String policyOwner) {
+      this.policyOwner = policyOwner;
+      return this;
+    }
+
+    public Builder expirationDate(Date expirationDate) {
+      this.expirationDate = expirationDate;
+      return this;
+    }
+
+    public InsuranceCard build() {
+      return new InsuranceCard(this);
+    }
   }
 }

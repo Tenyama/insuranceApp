@@ -1,4 +1,7 @@
-package classes;
+package classes.Customer;
+
+import classes.Claim;
+import classes.InsuranceCard;
 
 import java.io.IOException;
 import java.util.List;

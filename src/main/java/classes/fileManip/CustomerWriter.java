@@ -1,7 +1,7 @@
 package classes.fileManip;
 
-import classes.Dependent;
-import classes.PolicyHolder;
+import classes.Customer.Dependent;
+import classes.Customer.PolicyHolder;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -12,6 +12,8 @@ import java.util.List;
 
 public class CustomerWriter {
     public static void createCustomer(PolicyHolder dummy) {
+
+
         String content = dummy.toString();
 
         // Read existing content from the file
