@@ -9,7 +9,6 @@ import java.util.List;
 
 import classes.Claim;
 import classes.InsuranceCard;
-import classes.fileManip.CustomerWriter;
 import classes.fileManip.MaxIdFinder;
 
 public abstract class Customer {
@@ -55,9 +54,9 @@ public abstract class Customer {
 
   @Override
   public String toString() {
-    return "id='" + id + '\'' +
-            ", fullName='" + fullName + '\'' +
-            ", card=" + card +
+    return "id=" + id +
+            ", fullName=" + fullName +
+            ", card=" + (card == null? "null" : card.getCardNumber()) +
             ", listOfClaims=" + listOfClaims ;
   }
 }

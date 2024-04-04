@@ -8,13 +8,13 @@ import classes.Customer.Customer;
 import classes.fileManip.MaxIdFinder;
 import classes.fileManip.RandomNumberGenerator;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class InsuranceCard {
   private String cardNumber;
   private Customer cardHolder;
   private String policyOwner;
-  private Date expirationDate;
+  private LocalDate expirationDate;
   private InsuranceCard(Builder builder) {
     this.cardNumber = formatNumber(builder.cardNumber);
     this.cardHolder = builder.cardHolder;
@@ -24,7 +24,7 @@ public class InsuranceCard {
   public InsuranceCard() {
     this.cardNumber = formatNumber(RandomNumberGenerator.randTen());
   }
-  public InsuranceCard(Customer cardHolder, String policyOwner, Date expirationDate) {
+  public InsuranceCard(Customer cardHolder, String policyOwner, LocalDate expirationDate) {
     this.cardNumber = formatNumber(RandomNumberGenerator.randTen());
     this.cardHolder = cardHolder;
     this.policyOwner = policyOwner;
@@ -41,7 +41,7 @@ public class InsuranceCard {
     return "cardNumber=" + cardNumber +
             ", cardHolder=" + cardHolder +
             ", policyOwner=" + policyOwner +
-            ", expirationDate=" + expirationDate ;
+            ", expirationDate=" + expirationDate;
   }
 
   public String getCardNumber() {
@@ -64,18 +64,18 @@ public class InsuranceCard {
     return policyOwner;
   }
 
-  public Date getExpirationDate() {
+  public LocalDate getExpirationDate() {
     return expirationDate;
   }
 
-  public void setExpirationDate(Date expirationDate) {
+  public void setExpirationDate(LocalDate expirationDate) {
     this.expirationDate = expirationDate;
   }
   public static class Builder {
     private long cardNumber = RandomNumberGenerator.randTen();
     private Customer cardHolder;
     private String policyOwner;
-    private Date expirationDate;
+    private LocalDate expirationDate;
 
     public Builder () {
     }
@@ -94,7 +94,7 @@ public class InsuranceCard {
       return this;
     }
 
-    public Builder expirationDate(Date expirationDate) {
+    public Builder expirationDate(LocalDate expirationDate) {
       this.expirationDate = expirationDate;
       return this;
     }

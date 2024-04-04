@@ -5,26 +5,101 @@ package classes;
  */
 
 import classes.Customer.Customer;
+import classes.fileManip.MaxIdFinder;
 
-import java.util.Date;
+import java.io.IOException;
+import java.time.LocalDate;
 import java.util.List;
 
 public class Claim {
-  private String id;
-  private Date claimDate;
+  private static final String filePath = "src/main/java/docs/claims.txt";
+  private final String id;
+  private LocalDate claimDate;
   private Customer insuredPerson;
   private String cardNumber;
-  private Date examDate;
+  private LocalDate examDate;
   private List<String> documents;
   private double claimAmount;
   private String status;
   private String receiverBankingInfo;
 
-  public Claim() {
+  public static class Builder {
+    private final String id = formatId(MaxIdFinder.getMaxCustomerId(filePath) + 1);;
+    private LocalDate claimDate;
+    private Customer insuredPerson;
+    private String cardNumber;
+    private LocalDate examDate;
+    private List<String> documents;
+    private double claimAmount;
+    private String status;
+    private String receiverBankingInfo;
+
+    public Builder() throws IOException {
+    }
+
+    public Builder claimDate(LocalDate claimDate) {
+      this.claimDate = claimDate;
+      return this;
+    }
+
+    public Builder insuredPerson(Customer insuredPerson) {
+      this.insuredPerson = insuredPerson;
+      return this;
+    }
+
+    public Builder cardNumber(String cardNumber) {
+      this.cardNumber = cardNumber;
+      return this;
+    }
+
+    public Builder examDate(LocalDate examDate) {
+      this.examDate = examDate;
+      return this;
+    }
+
+    public Builder documents(List<String> documents) {
+      this.documents = documents;
+      return this;
+    }
+
+    public Builder claimAmount(double claimAmount) {
+      this.claimAmount = claimAmount;
+      return this;
+    }
+
+    public Builder status(String status) {
+      this.status = status;
+      return this;
+    }
+
+    public Builder receiverBankingInfo(String receiverBankingInfo) {
+      this.receiverBankingInfo = receiverBankingInfo;
+      return this;
+    }
+
+    public Claim build() throws IOException {
+      return new Claim(this);
+    }
   }
 
-  public Claim(String id, Date claimDate, Customer insuredPerson, String cardNumber, Date examDate, List<String> documents, double claimAmount, String status, String receiverBankingInfo) {
-    this.id = formatId(id);
+  private Claim(Builder builder) throws IOException {
+    this.id = formatId(MaxIdFinder.getMaxCustomerId(filePath) + 1);
+    this.claimDate = builder.claimDate;
+    this.insuredPerson = builder.insuredPerson;
+    this.cardNumber = builder.cardNumber;
+    this.examDate = builder.examDate;
+    this.documents = builder.documents;
+    this.claimAmount = builder.claimAmount;
+    this.status = builder.status;
+    this.receiverBankingInfo = builder.receiverBankingInfo;
+  }
+
+  public Claim() throws IOException {
+    this.id = formatId(MaxIdFinder.getMaxCustomerId(filePath) + 1);
+  }
+
+  public Claim(LocalDate claimDate, Customer insuredPerson, String cardNumber, LocalDate examDate, List<String> documents, double claimAmount, String status, String receiverBankingInfo) throws IOException {
+    this.id = formatId(MaxIdFinder.getMaxCustomerId(filePath) + 1);
     this.claimDate = claimDate;
     this.insuredPerson = insuredPerson;
     this.cardNumber = cardNumber;
@@ -35,28 +110,20 @@ public class Claim {
     this.receiverBankingInfo = receiverBankingInfo;
   }
 
-  public static String formatId(String number) {
+  public static String formatId(int number) {
     // Padding with leading zeros if necessary
-    StringBuilder paddedNumber = new StringBuilder(number);
-    while (paddedNumber.length() < 10) {
-      paddedNumber.insert(0, "0");
-    }
-    return "f-" + paddedNumber.toString();
+    return String.format("f-%010d", number);
   }
 
   public String getId() {
     return id;
   }
 
-  public void setId(String id) {
-    this.id = formatId(id);
-  }
-
-  public Date getClaimDate() {
+  public LocalDate getClaimDate() {
     return claimDate;
   }
 
-  public void setClaimDate(Date claimDate) {
+  public void setClaimDate(LocalDate claimDate) {
     this.claimDate = claimDate;
   }
 
@@ -76,11 +143,11 @@ public class Claim {
     this.cardNumber = cardNumber;
   }
 
-  public Date getExamDate() {
+  public LocalDate getExamDate() {
     return examDate;
   }
 
-  public void setExamDate(Date examDate) {
+  public void setExamDate(LocalDate examDate) {
     this.examDate = examDate;
   }
 
@@ -118,16 +185,14 @@ public class Claim {
 
   @Override
   public String toString() {
-    return "Claim{" +
-            "id='" + id + '\'' +
+    return "id=" + id +
             ", claimDate=" + claimDate +
-            ", insuredPerson=" + insuredPerson +
-            ", cardNumber='" + cardNumber + '\'' +
+            ", insuredPerson=" + (insuredPerson == null? "null" : insuredPerson.getId()) +
+            ", cardNumber=" + (insuredPerson.getCard() == null? "null" : insuredPerson.getCard().getCardNumber()) +
             ", examDate=" + examDate +
             ", documents=" + documents +
             ", claimAmount=" + claimAmount +
-            ", status='" + status + '\'' +
-            ", receiverBankingInfo='" + receiverBankingInfo + '\'' +
-            '}';
+            ", status=" + status +
+            ", receiverBankingInfo=" + receiverBankingInfo;
   }
 }

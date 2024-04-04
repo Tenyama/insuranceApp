@@ -1,12 +1,14 @@
-id='c-0000001', fullName='Le Thien Son', card=null, listOfClaims=null, dependentList=null, holder=null
-id='c-0000002', fullName='Hoang Thai Phuc', card=null, listOfClaims=null, dependentList=null, holder='c-0000001'
-id='c-0000003', fullName='Tran Nguyen Anh Minh', card=null, listOfClaims=null, dependentList=null, holder=null
-id='c-0000004', fullName='Nguyen Minh Quan', card=null, listOfClaims=null, dependentList=null, holder='c-0000003'
-id='c-0000005', fullName='Le Huu Toan', card=null, listOfClaims=null, dependentList=null, holder=null
-id='c-0000006', fullName='Do Le Trang Hanh', card=null, listOfClaims=null, dependentList=null, holder='c-0000005'
-id='c-0000007', fullName='null', card=null, listOfClaims=null, dependentList=null, holder=null
-id='c-0000008', fullName='null', card=null, listOfClaims=null, dependentList=null, holder=null
-id='c-0000009', fullName='Le Thien Son', card=null, listOfClaims=null, dependentList=null, holder=null
-id='c-0000010', fullName='Le Thien Son', card=null, listOfClaims=null, dependentList=null, holder=null
-id='c-0000011', fullName='Le Thien Son', card=null, listOfClaims=null, dependentList=null, holder=null
-id='c-0000012', fullName='null', card=null, listOfClaims=null, dependentList=null, holder='c-0000011'
+id=c-0000001, fullName=Le Thien Son, card=null, listOfClaims=null, dependentList=null, holder=null
+id=c-0000002, fullName=Tran Nguyen Anh Minh, card=null, listOfClaims=null, dependentList=null, holder=c-0000001
+id=c-0000003, fullName=Hoang Thai Phuc, card=null, listOfClaims=null, dependentList=null, holder=c-0000001
+id=c-0000004, fullName=Nguyen Minh Quan, card=null, listOfClaims=null, dependentList=null, holder=null
+id=c-0000005, fullName=John Wayne, card=null, listOfClaims=null, dependentList=null, holder=null
+id=c-0000006, fullName=Christopher, card=null, listOfClaims=null, dependentList=null, holder=null
+id=c-0000007, fullName=Shiriin, card=null, listOfClaims=null, dependentList=null, holder=null
+id=c-0000008, fullName=Ihfram, card=null, listOfClaims=null, dependentList=null, holder=c-0000007
+id=c-0000009, fullName=That guy, card=null, listOfClaims=null, dependentList=null, holder=null
+id=c-0000010, fullName=This Guy, card=null, listOfClaims=null, dependentList=null, holder=c-0000007
+id=c-0000011, fullName=The other guy, card=null, listOfClaims=null, dependentList=null, holder=null
+id=c-0000012, fullName=Who again?, card=null, listOfClaims=null, dependentList=null, holder=c-0000011
+id=c-0000013, fullName=Mortimer Doggington, card=cardNumber=6980050412, cardHolder=null, policyOwner=null, expirationDate=null, listOfClaims=null, dependentList=null, holder=null
+id=c-0000014, fullName=Mortimer Doggington, card=cardNumber=7960631206, cardHolder=null, policyOwner=null, expirationDate=null, listOfClaims=null, dependentList=null, holder=null

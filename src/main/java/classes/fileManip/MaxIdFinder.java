@@ -10,9 +10,9 @@ public class MaxIdFinder {
     public static int getMaxCustomerId(String filePath) throws IOException {
         Pattern pattern = null;
         if(filePath.contains("customers.txt")){
-            pattern = Pattern.compile("id='c-(\\d+)'");
+            pattern = Pattern.compile("id=c-(\\d+)");
         } else if (filePath.contains("claims.txt")) {
-            pattern = Pattern.compile("id='f-(\\d+)'");
+            pattern = Pattern.compile("id=f-(\\d+)");
         }
         int maxId = Integer.MIN_VALUE; // Initialize maxId with the smallest possible integer value
 

@@ -1,0 +1,2 @@
+id=f-0000000001, claimDate=2023-10-26, insuredPerson=c-0000001, cardNumber=null, examDate=null, documents=null, claimAmount=69.234, status=NEW, receiverBankingInfo=null
+id=f-0000000002, claimDate=2023-10-26, insuredPerson=c-0000008, cardNumber=5799869137, examDate=null, documents=null, claimAmount=69.234, status=NEW, receiverBankingInfo=null

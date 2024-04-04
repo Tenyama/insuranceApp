@@ -1,2 +1,0 @@
-cardNumber=9759977234, cardHolder=null, policyOwner=null, expirationDate=null
-cardNumber=8135385587, cardHolder=null, policyOwner=null, expirationDate=null

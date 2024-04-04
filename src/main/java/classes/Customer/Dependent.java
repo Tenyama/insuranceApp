@@ -22,6 +22,6 @@ public class Dependent extends Customer{
     @Override
     public String toString() {
         return super.toString() + ", dependentList=null" +
-                ", holder='" + holder.getId() + "'";
+                ", holder=" + holder.getId();
     }
 }

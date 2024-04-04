@@ -1,16 +1,23 @@
 package classes;
+
+import classes.fileManip.ClaimWriter;
+import classes.fileManip.ObjectWriter;
+
 /**
  * @author Le Thien Son - s3977955
  */
 
-import java.util.Date;
 
 public class ClaimProcessManager {
-    public void add(){
+    public void add(Claim foo){
+        ObjectWriter.writeObject(new ClaimWriter(foo));
     }
-    public void update(){
+    public void update(Claim foo){
+
     }
-    public void delete(){}
+    public void delete(Claim foo){
+
+    }
     public void getOne(){}
     public void getAll(){}
 }
