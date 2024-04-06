@@ -39,6 +39,7 @@ public class ManageClaims {
                         .setLayoutData(
                                 GridLayout.createHorizontallyFilledLayoutData(4)));
         contentPanel.addComponent(AddClaim.button(textGUI));
+        contentPanel.addComponent(UpdateClaim.button(textGUI));
         contentPanel.addComponent(RemoveClaim.button(textGUI));
         contentPanel.addComponent(
                 new Button("Close", window::close).setLayoutData(

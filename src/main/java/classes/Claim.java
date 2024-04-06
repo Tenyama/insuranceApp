@@ -7,7 +7,7 @@ package classes;
 import classes.Customer.Customer;
 import classes.fileManip.*;
 
-import java.io.IOException;
+import java.io.*;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -27,7 +27,7 @@ public class Claim implements ClaimProcessManager {
   private String receiverBankingInfo;
 
   public static class Builder {
-    private final String id = formatId(MaxIdFinder.getMaxCustomerId(filePath) + 1);;
+    private String id;
     private LocalDate claimDate;
     private Customer insuredPerson;
     private String cardNumber;
@@ -40,6 +40,10 @@ public class Claim implements ClaimProcessManager {
     public Builder() throws IOException {
     }
 
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     public Builder claimDate(LocalDate claimDate) {
       this.claimDate = claimDate;
       return this;
@@ -86,7 +90,7 @@ public class Claim implements ClaimProcessManager {
   }
 
   private Claim(Builder builder) throws IOException {
-    this.id = formatId(MaxIdFinder.getMaxCustomerId(filePath) + 1);
+    this.id = builder.id;
     this.claimDate = builder.claimDate;
     this.insuredPerson = builder.insuredPerson;
     this.cardNumber = builder.cardNumber;
@@ -204,8 +208,35 @@ public class Claim implements ClaimProcessManager {
   }
 
   @Override
-  public void update() {
+  public void update(String idToUpdate, Claim dummy) throws IOException {
+    File inputFile = new File(filePath);
+    File tempFile = new File("src/main/java/docs/temp.txt");
 
+    BufferedReader reader = new BufferedReader(new FileReader(inputFile));
+    BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
+
+    String currentLine;
+    while ((currentLine = reader.readLine()) != null) {
+      // Check if the current line contains the ID to remove
+      if (currentLine.contains(idToUpdate)) {
+        writer.write(dummy.toString() + System.getProperty("line.separator"));
+        continue;
+      }
+      writer.write(currentLine + System.getProperty("line.separator"));
+    }
+    writer.close();
+    reader.close();
+
+    // Delete the original file
+    if (!inputFile.delete()) {
+      System.err.println("Failed to delete the original file.");
+      return;
+    }
+
+    // Rename the temporary file to the original file name
+    if (!tempFile.renameTo(inputFile)) {
+      System.err.println("Failed to rename the temporary file.");
+    }
   }
 
   @Override
@@ -214,16 +245,16 @@ public class Claim implements ClaimProcessManager {
   }
 
   @Override
-  public String getOne(List<String> data) {
+  public String getOne(List<String> rowData) {
     StringBuilder message = new StringBuilder();
-    message.append("Id: ").append(data.get(0)).append("\n");
-    message.append("Claim Date: ").append(data.get(1)).append("\n");
-    message.append("Insured Person: ").append(data.get(2)).append("\n");
-    message.append("Exam Date: ").append(data.get(3)).append("\n");
-    message.append("Documents: ").append(data.get(4)).append("\n");
-    message.append("Claim Amount: ").append(data.get(5)).append("\n");
-    message.append("Status: ").append(data.get(5)).append("\n");
-    message.append("Receiver Banking Info: ").append(data.get(5)).append("\n");
+    message.append("Id: ").append(rowData.get(0)).append("\n");
+    message.append("Claim Date: ").append(rowData.get(1)).append("\n");
+    message.append("Insured Person: ").append(rowData.get(2)).append("\n");
+    message.append("Exam Date: ").append(rowData.get(3)).append("\n");
+    message.append("Documents: ").append(rowData.get(4)).append("\n");
+    message.append("Claim Amount: ").append(rowData.get(5)).append("\n");
+    message.append("Status: ").append(rowData.get(5)).append("\n");
+    message.append("Receiver Banking Info: ").append(rowData.get(5)).append("\n");
     return message.toString();
   }
 

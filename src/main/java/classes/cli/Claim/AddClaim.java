@@ -7,16 +7,17 @@ import classes.Customer.Dependent;
 import classes.Customer.PolicyHolder;
 import classes.Customer.Utils;
 import classes.InsuranceCard;
-import classes.fileManip.ClaimProcessManager;
-import classes.fileManip.DependentWriter;
-import classes.fileManip.ObjectWriter;
-import classes.fileManip.PolicyHolderWriter;
+import classes.fileManip.*;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.gui2.*;
 import com.googlecode.lanterna.gui2.dialogs.MessageDialog;
+import com.googlecode.lanterna.gui2.dialogs.TextInputDialog;
+import com.googlecode.lanterna.gui2.dialogs.TextInputDialogBuilder;
 
+import javax.swing.text.LabelView;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -24,10 +25,13 @@ import java.util.Objects;
 import static classes.fileManip.Reader.*;
 
 public class AddClaim{
+    static Claim dummy = null;
     public static Component button(WindowBasedTextGUI textGUI){
         Button button = new Button("Add", new Runnable() {
             @Override
             public void run() {
+                //Initiate a list of documents
+                List<String> documents = new ArrayList<>();
                 // Create text boxes
                 TextBox claimYearBox = new TextBox();
                 TextBox claimMonthBox = new TextBox();
@@ -120,6 +124,60 @@ public class AddClaim{
                 panel.addComponent(new EmptySpace()
                         .setLayoutData(
                                 GridLayout.createHorizontallyFilledLayoutData(2)));
+                panel.addComponent(new Label("Documents:"));
+                panel.addComponent(new Button("Add Documents", new Runnable() {
+                    @Override
+                    public void run() {
+                        Panel subPanel = new Panel();
+                        ComboBox<String> claimIdBox = new ComboBox<String>();
+                        ComboBox<String> cardNumberBox = new ComboBox<>();
+                        TextBox docNameBox = new TextBox();
+
+                        try {
+                            dummy = new Claim();
+                            List<String[]> claims = dummy.getAll();
+                            for (String[] data : claims) {
+                                claimIdBox.addItem(data[0]);
+                            }
+                            List<String[]> cards = readFile(2);
+                            for (String[] data : cards) {
+                                cardNumberBox.addItem(data[0]);
+                            }
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        Label claimIdLabel = new Label("Claim ID:");
+                        Label cardNumberLabel = new Label("Card Number:");
+                        Label docNameLabel = new Label("Document Name:");
+
+                        subPanel.addComponent(claimIdLabel);
+                        subPanel.addComponent(claimIdBox);
+                        subPanel.addComponent(cardNumberLabel);
+                        subPanel.addComponent(cardNumberBox);
+                        subPanel.addComponent(docNameLabel);
+                        subPanel.addComponent(docNameBox);
+
+                        Button saveButton = new Button("Confirm", new Runnable() {
+                            @Override
+                            public void run() {
+                                String result = claimIdBox.getSelectedItem() + "_" + cardNumberBox.getSelectedItem() + "_" + docNameBox.getText() + ".pdf";
+                                documents.add(result);
+                                MessageDialog.showMessageDialog(textGUI,"Document Added", "The document was added successfully.");
+                            }
+                        });
+                        subPanel.addComponent(saveButton);
+                        // Create a window to contain the panel
+                        BasicWindow window = new BasicWindow("Enter Document Details");
+                        window.setCloseWindowWithEscape(true);
+                        window.setHints(Arrays.asList(Window.Hint.CENTERED));
+                        window.setComponent(subPanel);
+                        // Add the window to the GUI
+                        textGUI.addWindowAndWait(window);
+                    }
+                }));
+                panel.addComponent(new EmptySpace()
+                        .setLayoutData(
+                                GridLayout.createHorizontallyFilledLayoutData(2)));
                 panel.addComponent(claimLabel);
                 panel.addComponent(claimBox);
                 panel.addComponent(statusLabel);
@@ -161,7 +219,7 @@ public class AddClaim{
                                 PolicyHolder dum = new PolicyHolder(Utils.findIdByName(insuredPerson));
                                 Claim dummy = new Claim.Builder().claimDate(LocalDate.of(claimYear, claimMonth, claimDay))
                                         .insuredPerson(dum).cardNumber(card).examDate(LocalDate.of(examYear, examMonth, examDay))
-                                        .claimAmount(claimAmount).status(status).receiverBankingInfo(receiverInfo).build();
+                                        .documents(documents).claimAmount(claimAmount).status(status).receiverBankingInfo(receiverInfo).build();
                                 dummy.add();
                                 MessageDialog.showMessageDialog(textGUI, "Object Added", "The card was added successfully.");
                             } catch (IOException e) {

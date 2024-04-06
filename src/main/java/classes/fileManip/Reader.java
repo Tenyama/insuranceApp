@@ -49,6 +49,12 @@ public class Reader {
                             } else {
                                 data[4] = value.equals("null") ? "" : value + ",...]";
                             }
+                        } else if (key.equals("documents")) {
+                            if (value.endsWith("]")) {
+                                data[5] = value.equals("null") ? "" : value;
+                            } else {
+                                data[5] = value.equals("null") ? "" : value + ",...]";
+                            }
                         } else {
                             data[iterator] = value.equals("null") ? "" : value;
                         }
