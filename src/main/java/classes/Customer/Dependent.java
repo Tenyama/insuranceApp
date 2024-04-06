@@ -19,6 +19,11 @@ public class Dependent extends Customer{
         this.holder = holder;
     }
 
+    public Dependent(String id, PolicyHolder holder) {
+        super(id);
+        this.holder = holder;
+    }
+
     @Override
     public String toString() {
         return super.toString() + ", dependentList=null" +

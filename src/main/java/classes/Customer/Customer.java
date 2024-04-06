@@ -11,6 +11,8 @@ import classes.Claim;
 import classes.InsuranceCard;
 import classes.fileManip.MaxIdFinder;
 
+import static classes.fileManip.FileLineRemover.removeLineById;
+
 public abstract class Customer {
   private static String filePath = "src/main/java/docs/customers.txt";
   private String id;
@@ -27,6 +29,15 @@ public abstract class Customer {
     this.fullName = fullName;
     this.card = card;
     this.listOfClaims = listOfClaims;
+  }
+
+  public Customer(String fullName, InsuranceCard card) {
+    this.fullName = fullName;
+    this.card = card;
+  }
+
+  public Customer(String id) {
+    this.id = id;
   }
 
   public static String formatId(int number) {
@@ -52,6 +63,9 @@ public abstract class Customer {
     this.listOfClaims = listOfClaims;
   }
 
+  public void removeById(String id){
+    removeLineById(filePath, id);
+  }
   @Override
   public String toString() {
     return "id=" + id +

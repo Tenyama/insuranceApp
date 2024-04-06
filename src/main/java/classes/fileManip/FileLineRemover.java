@@ -42,8 +42,4 @@ public class FileLineRemover {
         }
     }
 
-    public static void main(String[] args) {
-        // Usage example
-        removeLineById("src/main/java/docs/claims.txt", "f-0000000002");
-    }
 }

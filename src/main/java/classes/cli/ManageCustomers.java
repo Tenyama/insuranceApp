@@ -9,6 +9,7 @@ import com.googlecode.lanterna.gui2.*;
 import com.googlecode.lanterna.gui2.table.Table;
 import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.terminal.Terminal;
+import com.thoughtworks.qdox.model.expression.Add;
 
 public class ManageCustomers {
     public static void selector(Terminal terminal, Screen screen, TextGraphics tg, TerminalSize terminalSize) throws IOException {
@@ -45,9 +46,11 @@ public class ManageCustomers {
                 new Separator(Direction.HORIZONTAL)
                         .setLayoutData(
                                 GridLayout.createHorizontallyFilledLayoutData(4)));
+        contentPanel.addComponent(AddCustomer.button(textGUI));
+        contentPanel.addComponent(RemoveCustomer.button(textGUI));
         contentPanel.addComponent(
                 new Button("Close", window::close).setLayoutData(
-                        GridLayout.createHorizontallyEndAlignedLayoutData(4)));
+                        GridLayout.createHorizontallyEndAlignedLayoutData(1)));
         screen.refresh();
         window.setComponent(contentPanel);
         textGUI.addWindowAndWait(window);
