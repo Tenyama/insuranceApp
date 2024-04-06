@@ -126,54 +126,16 @@ public class AddClaim{
                         .setLayoutData(
                                 GridLayout.createHorizontallyFilledLayoutData(2)));
                 panel.addComponent(new Label("Documents:"));
-                panel.addComponent(new Button("Add Documents", new Runnable() {
+                panel.addComponent(new Button("Add Document", new Runnable() {
                     @Override
                     public void run() {
-                        Panel subPanel = new Panel();
-                        ComboBox<String> claimIdBox = new ComboBox<String>();
-                        ComboBox<String> cardNumberBox = new ComboBox<>();
-                        TextBox docNameBox = new TextBox();
-
                         try {
                             dummy = new Claim();
-                            List<String[]> claims = dummy.getAll();
-                            for (String[] data : claims) {
-                                claimIdBox.addItem(data[0]);
-                            }
-                            List<String[]> cards = readFile(2);
-                            for (String[] data : cards) {
-                                cardNumberBox.addItem(data[0]);
-                            }
                         } catch (IOException e) {
-                            e.printStackTrace();
+                            throw new RuntimeException(e);
                         }
-                        Label claimIdLabel = new Label("Claim ID:");
-                        Label cardNumberLabel = new Label("Card Number:");
-                        Label docNameLabel = new Label("Document Name:");
-
-                        subPanel.addComponent(claimIdLabel);
-                        subPanel.addComponent(claimIdBox);
-                        subPanel.addComponent(cardNumberLabel);
-                        subPanel.addComponent(cardNumberBox);
-                        subPanel.addComponent(docNameLabel);
-                        subPanel.addComponent(docNameBox);
-
-                        Button saveButton = new Button("Confirm", new Runnable() {
-                            @Override
-                            public void run() {
-                                String result = claimIdBox.getSelectedItem() + "_" + cardNumberBox.getSelectedItem() + "_" + docNameBox.getText() + ".pdf";
-                                documents.add(result);
-                                MessageDialog.showMessageDialog(textGUI,"Document Added", "The document was added successfully.");
-                            }
-                        });
-                        subPanel.addComponent(saveButton);
-                        // Create a window to contain the panel
-                        BasicWindow window = new BasicWindow("Enter Document Details");
-                        window.setCloseWindowWithEscape(true);
-                        window.setHints(Arrays.asList(Window.Hint.CENTERED));
-                        window.setComponent(subPanel);
-                        // Add the window to the GUI
-                        textGUI.addWindowAndWait(window);
+                        String input = TextInputDialog.showDialog(textGUI, "Documents", "Please enter the document name", "Initial content");
+                        documents.add(dummy.getId() + "_" + cardBox.getSelectedItem() + "_" + input + ".pdf");
                     }
                 }));
                 panel.addComponent(new EmptySpace()
@@ -218,7 +180,7 @@ public class AddClaim{
                         } else {
                             try {
                                 PolicyHolder dum = new PolicyHolder(Utils.findIdByName(insuredPerson));
-                                Claim dummy = new Claim.Builder().claimDate(LocalDate.of(claimYear, claimMonth, claimDay))
+                                Claim dummy = new Claim.Builder().id().claimDate(LocalDate.of(claimYear, claimMonth, claimDay))
                                         .insuredPerson(dum).cardNumber(card).examDate(LocalDate.of(examYear, examMonth, examDay))
                                         .documents(documents).claimAmount(claimAmount).status(status).receiverBankingInfo(receiverInfo).build();
                                 dummy.add();

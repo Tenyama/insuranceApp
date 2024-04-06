@@ -1,20 +1,15 @@
-id=c-0000001, fullName=Le Thien Son, card=null, listOfClaims=null, dependentList=null, holder=null
-id=c-0000002, fullName=Tran Nguyen Anh Minh, card=null, listOfClaims=null, dependentList=null, holder=c-0000001
-id=c-0000003, fullName=Hoang Thai Phuc, card=null, listOfClaims=null, dependentList=null, holder=c-0000001
-id=c-0000004, fullName=Nguyen Minh Quan, card=null, listOfClaims=null, dependentList=null, holder=null
-id=c-0000005, fullName=John Wayne, card=null, listOfClaims=null, dependentList=null, holder=null
-id=c-0000006, fullName=Christopher, card=null, listOfClaims=null, dependentList=null, holder=null
-id=c-0000007, fullName=Shiriin, card=null, listOfClaims=null, dependentList=null, holder=null
-id=c-0000008, fullName=Ihfram, card=null, listOfClaims=null, dependentList=null, holder=c-0000007
-id=c-0000009, fullName=That guy, card=null, listOfClaims=null, dependentList=null, holder=null
-id=c-0000010, fullName=This Guy, card=null, listOfClaims=null, dependentList=null, holder=c-0000007
-id=c-0000011, fullName=The other guy, card=null, listOfClaims=null, dependentList=null, holder=null
-id=c-0000012, fullName=Who again?, card=null, listOfClaims=null, dependentList=null, holder=c-0000011
-id=c-0000015, fullName=Mortimer Doggington, card=5799869137, listOfClaims=null, dependentList=null, holder=null
-id=c-0000018, fullName=Maniiga, card=null, listOfClaims=null, dependentList=null, holder=null
-id=c-0000019, fullName=Ballsock, card=null, listOfClaims=null, dependentList=null, holder=null
-id=c-0000020, fullName=Lol, card=null, listOfClaims=null, dependentList=null, holder=null
-id=c-0000022, fullName=Bladee, card=null, listOfClaims=null, dependentList=[c-0000018], holder=null
-id=c-0000023, fullName=idk&idfc, card=null, listOfClaims=null, dependentList=[c-0000004, c-0000007, c-0000018], holder=null
-id=c-0000024, fullName=TESTING, card=null, listOfClaims=null, dependentList=[c-0000004, c-0000005, c-0000006, c-0000007, c-0000009, c-0000011, c-0000018, c-0000019], holder=null
-id=c-0000025, fullName=Btsalsd, card=1492641628, listOfClaims=null, dependentList=null, holder=c-0000004
+id=c-0000001, fullName=Le Thien Son, card=9152383995, listOfClaims=null, dependentList=[c-0000002, c-0000003], holder=null
+id=c-0000002, fullName=Tran Nguyen Anh Minh, card=9707120440, listOfClaims=null, dependentList=null, holder=c-0000001
+id=c-0000003, fullName=Hoang Thai Phuc, card=7580947038, listOfClaims=null, dependentList=null, holder=c-0000001
+id=c-0000004, fullName=Nguyen Minh Quan, card=3179067981, listOfClaims=null, dependentList=null, holder=null
+id=c-0000005, fullName=John Wayne, card=5147163746, listOfClaims=null, dependentList=null, holder=null
+id=c-0000006, fullName=Christopher, card=3113776043, listOfClaims=null, dependentList=null, holder=null
+id=c-0000007, fullName=Shiriin, card=1849482616, listOfClaims=null, dependentList=[c-0000008, c-0000010], holder=null
+id=c-0000008, fullName=Ihfram, card=5305136792, listOfClaims=null, dependentList=null, holder=c-0000007
+id=c-0000009, fullName=That guy, card=4329069699, listOfClaims=null, dependentList=null, holder=null
+id=c-0000010, fullName=This Guy, card=4879936534, listOfClaims=null, dependentList=null, holder=c-0000007
+id=c-0000011, fullName=The other guy, card=7712250670, listOfClaims=null, dependentList=[c-0000012], holder=null
+id=c-0000012, fullName=Who again?, card=4047173845, listOfClaims=null, dependentList=null, holder=c-0000011
+id=c-0000013, fullName=Mortimer Doggington, card=7250515917, listOfClaims=null, dependentList=null, holder=null
+id=c-0000014, fullName=Brock Lee, card=4505087334, listOfClaims=null, dependentList=null, holder=null
+id=c-0000015, fullName=NutsFromBerk, card=9132909930, listOfClaims=null, dependentList=null, holder=null

@@ -44,6 +44,10 @@ public class Claim implements ClaimProcessManager {
       this.id = id;
       return this;
     }
+    public Builder id() throws IOException {
+      this.id = formatId(MaxIdFinder.getMaxCustomerId(filePath) + 1);
+      return this;
+    }
     public Builder claimDate(LocalDate claimDate) {
       this.claimDate = claimDate;
       return this;
