@@ -15,9 +15,9 @@ public class MenuScreen {
         tg.setForegroundColor(TextColor.ANSI.RED);
         tg.putString(2, 1,"Press esc to quit");
         tg.setForegroundColor(TextColor.ANSI.DEFAULT);
-        tg.putString(2, terminalSize.getRows() - 6,"Please choose the desired function:");
-        tg.putString(2, terminalSize.getRows() - 5,"1. Manage Customers");
-        tg.putString(2, terminalSize.getRows() - 4,"2. Manage Claims");
-        tg.putString(2, terminalSize.getRows() - 3,"3. Reports");
+        tg.putString(2, terminalSize.getRows() - 7,"Please choose the desired function:");
+        tg.putString(2, terminalSize.getRows() - 6,"1. Manage Customers");
+        tg.putString(2, terminalSize.getRows() - 5,"2. Manage Cards");
+        tg.putString(2, terminalSize.getRows() - 4,"3. Manage Claims");
     }
 }

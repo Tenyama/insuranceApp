@@ -3,16 +3,15 @@ package classes.cli;
  * @author Le Thien Son - s3977955
  */
 
-import java.awt.*;
 import java.io.IOException;
 
-import com.googlecode.lanterna.SGR;
-import com.googlecode.lanterna.TerminalPosition;
+import classes.cli.Card.ManageCards;
+import classes.cli.Claim.ManageClaims;
+import classes.cli.Customer.ManageCustomers;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
-import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
@@ -75,31 +74,21 @@ public class Home {
                                 switch (choice) {
                                     case '1':
                                         tg.putString(2, terminalSize.getRows() - 2, "                                                                  ");
-                                        tg.putString(2, 1, "You selected: Manage Customers");
                                         screen.refresh();
-                                        ManageCustomers.selector(terminal, screen, tg, terminalSize);
+                                        ManageCustomers.selector(screen);
                                         MenuScreen.display(terminal, screen, tg, terminalSize);
                                         screen.refresh();
                                         break;
                                     case '2':
                                         tg.putString(2, terminalSize.getRows() - 2, "                                                                  ");
-                                        tg.setForegroundColor(TextColor.ANSI.YELLOW);
-                                        tg.putString(2, terminalSize.getRows() - 2, "You selected: Manage Claims");
-                                        tg.setForegroundColor(TextColor.ANSI.DEFAULT);
+                                        ManageCards.view(screen);
+                                        MenuScreen.display(terminal, screen, tg, terminalSize);
                                         screen.refresh();
                                         break;
                                     case '3':
                                         tg.putString(2, terminalSize.getRows() - 2, "                                                                  ");
-                                        tg.setForegroundColor(TextColor.ANSI.YELLOW);
-                                        tg.putString(2, terminalSize.getRows() - 2, "You selected: Reports");
-                                        tg.setForegroundColor(TextColor.ANSI.DEFAULT);
-                                        screen.refresh();
-                                        break;
-                                    case '4':
-                                        tg.putString(2, terminalSize.getRows() - 2, "                                                                  ");
-                                        tg.setForegroundColor(TextColor.ANSI.YELLOW);
-                                        tg.putString(2, terminalSize.getRows() - 2, "You selected: Reports");
-                                        tg.setForegroundColor(TextColor.ANSI.DEFAULT);
+                                        ManageClaims.view(screen);
+                                        MenuScreen.display(terminal, screen, tg, terminalSize);
                                         screen.refresh();
                                         break;
                                     default:

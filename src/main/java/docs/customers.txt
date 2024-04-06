@@ -15,3 +15,6 @@ id=c-0000018, fullName=Maniiga, card=null, listOfClaims=null, dependentList=null
 id=c-0000019, fullName=Ballsock, card=null, listOfClaims=null, dependentList=null, holder=null
 id=c-0000020, fullName=Lol, card=null, listOfClaims=null, dependentList=null, holder=null
 id=c-0000022, fullName=Bladee, card=null, listOfClaims=null, dependentList=[c-0000018], holder=null
+id=c-0000023, fullName=idk&idfc, card=null, listOfClaims=null, dependentList=[c-0000004, c-0000007, c-0000018], holder=null
+id=c-0000024, fullName=TESTING, card=null, listOfClaims=null, dependentList=[c-0000004, c-0000005, c-0000006, c-0000007, c-0000009, c-0000011, c-0000018, c-0000019], holder=null
+id=c-0000025, fullName=Btsalsd, card=1492641628, listOfClaims=null, dependentList=null, holder=c-0000004

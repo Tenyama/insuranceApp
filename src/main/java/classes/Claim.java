@@ -5,13 +5,16 @@ package classes;
  */
 
 import classes.Customer.Customer;
-import classes.fileManip.MaxIdFinder;
+import classes.fileManip.*;
 
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 
-public class Claim {
+import static classes.fileManip.FileLineRemover.removeLineById;
+import static classes.fileManip.Reader.readFile;
+
+public class Claim implements ClaimProcessManager {
   private static final String filePath = "src/main/java/docs/claims.txt";
   private final String id;
   private LocalDate claimDate;
@@ -188,11 +191,44 @@ public class Claim {
     return "id=" + id +
             ", claimDate=" + claimDate +
             ", insuredPerson=" + (insuredPerson == null? "null" : insuredPerson.getId()) +
-            ", cardNumber=" + (insuredPerson.getCard() == null? "null" : insuredPerson.getCard().getCardNumber()) +
+            ", cardNumber=" + cardNumber +
             ", examDate=" + examDate +
             ", documents=" + documents +
             ", claimAmount=" + claimAmount +
             ", status=" + status +
             ", receiverBankingInfo=" + receiverBankingInfo;
+  }
+  @Override
+  public void add(){
+    ObjectWriter.writeObject(new ClaimWriter(this));
+  }
+
+  @Override
+  public void update() {
+
+  }
+
+  @Override
+  public void delete(String name) {
+    removeLineById(filePath, name);
+  }
+
+  @Override
+  public String getOne(List<String> data) {
+    StringBuilder message = new StringBuilder();
+    message.append("Id: ").append(data.get(0)).append("\n");
+    message.append("Claim Date: ").append(data.get(1)).append("\n");
+    message.append("Insured Person: ").append(data.get(2)).append("\n");
+    message.append("Exam Date: ").append(data.get(3)).append("\n");
+    message.append("Documents: ").append(data.get(4)).append("\n");
+    message.append("Claim Amount: ").append(data.get(5)).append("\n");
+    message.append("Status: ").append(data.get(5)).append("\n");
+    message.append("Receiver Banking Info: ").append(data.get(5)).append("\n");
+    return message.toString();
+  }
+
+  @Override
+  public List<String[]> getAll() throws IOException {
+    return readFile(3);
   }
 }

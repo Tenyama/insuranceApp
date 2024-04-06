@@ -1,4 +1,4 @@
-package classes.cli;
+package classes.cli.Customer;
 
 import com.googlecode.lanterna.gui2.*;
 import com.googlecode.lanterna.gui2.table.Table;
@@ -8,13 +8,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static classes.fileManip.Reader.readCustomerData;
+import static classes.fileManip.Reader.readFile;
 
-public class CustomerTable {
+public class CustomerTable{
     public static Table get(WindowBasedTextGUI textGUI){
         Table<String> table = new Table<String>("Id", "Full Name", "Card", String.format("%15s","List of Claims"), String.format("%15s","Dependent List"), String.format("%15s","Policy Holder"));
         try {
-            List<String[]> customerData = readCustomerData();
+            List<String[]> customerData = readFile(1);
             for (String[] data : customerData) {
                 List<String> rowData = new ArrayList<>();
                 for (String value : data) {

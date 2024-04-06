@@ -24,6 +24,11 @@ public class InsuranceCard {
   public InsuranceCard() {
     this.cardNumber = formatNumber(RandomNumberGenerator.randTen());
   }
+
+  public InsuranceCard(String cardNumber) {
+    this.cardNumber = cardNumber;
+  }
+
   public InsuranceCard(Customer cardHolder, String policyOwner, LocalDate expirationDate) {
     this.cardNumber = formatNumber(RandomNumberGenerator.randTen());
     this.cardHolder = cardHolder;
@@ -39,7 +44,7 @@ public class InsuranceCard {
   @Override
   public String toString() {
     return "cardNumber=" + cardNumber +
-            ", cardHolder=" + cardHolder +
+            ", cardHolder=" + (cardHolder == null? "null" : cardHolder.getId()) +
             ", policyOwner=" + policyOwner +
             ", expirationDate=" + expirationDate;
   }
@@ -84,8 +89,8 @@ public class InsuranceCard {
     //("Gotta add READER")//
     ////////////////////////
 
-    public Builder cardHolder(String cardHolder) {
-      this.policyOwner = policyOwner;
+    public Builder cardHolder(Customer cardHolder) {
+      this.cardHolder = cardHolder;
       return this;
     }
 

@@ -5,13 +5,13 @@ import java.util.List;
 import java.util.Objects;
 
 import static classes.fileManip.Reader.listDependent;
-import static classes.fileManip.Reader.readCustomerData;
+import static classes.fileManip.Reader.readFile;
 
 public class Utils {
     public static String findIdByName(String name) throws IOException {
         String id = "";
         try {
-            List<String[]> dependents = readCustomerData();
+            List<String[]> dependents = readFile(1);
             for (String[] data : dependents) {
                 if(Objects.equals(data[1], name)) {
                     id = data[0];

@@ -13,6 +13,10 @@ public class Dependent extends Customer{
         super();
         this.holder = holder;
     }
+    public Dependent(String holder) throws IOException {
+        super();
+        this.holder = new PolicyHolder(Utils.findIdByName(holder));
+    }
 
     public Dependent(String fullName, InsuranceCard card, List<Claim> listOfClaims, PolicyHolder holder) throws IOException {
         super(fullName, card, listOfClaims);

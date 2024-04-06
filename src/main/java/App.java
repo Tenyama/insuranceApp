@@ -13,13 +13,13 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.*;
 
-import static classes.fileManip.Reader.readCustomerData;
-
+import static classes.fileManip.Reader.readFile;
 
 public class App{
     public static void main(String[] args) throws IOException {
         Home.displayHomeScreen();
 //        InsuranceCard bidv = new InsuranceCard();
+//        ObjectWriter.writeObject(new InsuranceCardWriter(bidv));
 //        PolicyHolder son = new PolicyHolder();
 //        son.setFullName("Mortimer Doggington");
 //        son.setCard(bidv);
@@ -32,7 +32,7 @@ public class App{
 //        Claim bruh = new Claim.Builder().claimAmount(69.234).claimDate(LocalDate.of(2023,10,26)).insuredPerson(son).status("NEW").build();
 //        ObjectWriter.writeObject(new ClaimWriter(bruh));
 //        try {
-//            List<String[]> customerData = Reader.listDependent();
+//            List<String[]> customerData = Reader.readFile(2);
 //            for (String[] data : customerData) {
 //                List<String> rowData = new ArrayList<>();
 //                for (String value : data) {

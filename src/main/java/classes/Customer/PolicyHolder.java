@@ -23,6 +23,9 @@ public class PolicyHolder extends Customer{
         super(fullName, card);
         this.dependentList = dependentList;
     }
+    public PolicyHolder(String id) {
+        super(id);
+    }
 
     public List<Dependent> getDependentList() {
         return dependentList;
