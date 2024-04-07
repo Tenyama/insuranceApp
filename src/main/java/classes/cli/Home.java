@@ -8,6 +8,7 @@ import java.io.IOException;
 import classes.cli.Card.ManageCards;
 import classes.cli.Claim.ManageClaims;
 import classes.cli.Customer.ManageCustomers;
+import com.googlecode.lanterna.SGR;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
@@ -41,6 +42,7 @@ public class Home {
             tg.putString(3, 8, "╰━━┻╯╰┻━━┻━━┻╯╰╯╰┻╯╰┻━━┻━━╯╰╯ ╰┫╭━┫╭━╯");
             tg.putString(3, 9, "                               ┃┃ ┃┃  ");
             tg.putString(3, 10, "                               ╰╯ ╰╯  ");
+            tg.putString(3, terminalSize.getRows() - 5, "For the best experience please fullscreen your terminal", SGR.BOLD);
             tg.setForegroundColor(TextColor.ANSI.GREEN);
             tg.putString(3, terminalSize.getRows() - 4, "Press Right Arrow key → to continue");
             tg.setForegroundColor(TextColor.ANSI.RED);

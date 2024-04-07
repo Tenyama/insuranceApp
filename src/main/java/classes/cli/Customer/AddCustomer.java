@@ -32,6 +32,7 @@ public class AddCustomer {
                 // Create text boxes
                 TextBox fullNameTextBox = new TextBox(new TerminalSize(20,1));
                 ComboBox<String> cardTextBox = new ComboBox<String>();
+                CheckBoxList<String> claimBox = new CheckBoxList<String>(new TerminalSize(30, 5));
                 CheckBoxList<String> dependentTextBox = new CheckBoxList<String>(new TerminalSize(30, 5));
                 ComboBox<String> holderTextBox = new ComboBox<String>();
 
@@ -51,6 +52,15 @@ public class AddCustomer {
                     List<String[]> holders = listHolder();
                     for (String[] data : holders) {
                         holderTextBox.addItem(data[1]);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                try {
+                    List<String[]> claims = readFile(3);
+                    for (String[] data : claims) {
+                        claimBox.addItem(data[0]);
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -80,6 +90,8 @@ public class AddCustomer {
                 panel.addComponent(fullNameTextBox);
                 panel.addComponent(cardLabel);
                 panel.addComponent(cardTextBox);
+                panel.addComponent(new Label ("Claim List:"));
+                panel.addComponent(claimBox);
                 panel.addComponent(dependentLabel);
                 panel.addComponent(dependentTextBox);
                 panel.addComponent(holderLabel);
@@ -91,6 +103,7 @@ public class AddCustomer {
                     public void run() {
                         String fullName = fullNameTextBox.getText();
                         String card = cardTextBox.getSelectedItem();
+                        List<String> claim = claimBox.getCheckedItems();
                         List<String> dependent = dependentTextBox.getCheckedItems();
                         String holder = holderTextBox.getSelectedItem();
                         if(!dependent.isEmpty() && !Objects.equals(holder, "NONE")){
@@ -101,6 +114,9 @@ public class AddCustomer {
                                 InsuranceCard fake = new InsuranceCard(card);
                                 dummy.setFullName(fullName);
                                 dummy.setCard(fake);
+                                for (String data : claim){
+                                    dummy.addClaim(data);
+                                }
                                 for (String data : dependent){
                                     dummy.addDependent(data);
                                 }

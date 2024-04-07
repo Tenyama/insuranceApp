@@ -14,7 +14,7 @@ import java.util.List;
 public interface ClaimProcessManager {
     public void add();
     public void update(String idToUpdate, Claim dummy) throws IOException;
-    public void delete(String name);
+    public void delete(String id);
     public String getOne(List<String> data);
     public List<String[]> getAll() throws IOException;
 }

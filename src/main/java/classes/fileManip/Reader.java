@@ -53,10 +53,14 @@ public class Reader {
                                 data[4] = value.equals("null") ? "" : value + ",...]";
                             }
                         } else if (key.equals("documents")) {
+                            if (value.length() > 8) {
+                                data[5] = value.substring(0, 5) + "...]";
+                            }
+                        } else if (key.equals("listOfClaims")) {
                             if (value.endsWith("]")) {
-                                data[5] = value.equals("null") ? "" : value;
+                                data[3] = value.equals("null") ? "" : value;
                             } else {
-                                data[5] = value.equals("null") ? "" : value + ",...]";
+                                data[3] = value.equals("null") ? "" : value + ",...]";
                             }
                         } else {
                             data[iterator] = value.equals("null") ? "" : value;

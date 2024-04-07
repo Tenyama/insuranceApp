@@ -109,18 +109,6 @@ public class Claim implements ClaimProcessManager {
     this.id = formatId(MaxIdFinder.getMaxCustomerId(filePath) + 1);
   }
 
-  public Claim(LocalDate claimDate, Customer insuredPerson, String cardNumber, LocalDate examDate, List<String> documents, double claimAmount, String status, String receiverBankingInfo) throws IOException {
-    this.id = formatId(MaxIdFinder.getMaxCustomerId(filePath) + 1);
-    this.claimDate = claimDate;
-    this.insuredPerson = insuredPerson;
-    this.cardNumber = cardNumber;
-    this.examDate = examDate;
-    this.documents = documents;
-    this.claimAmount = claimAmount;
-    this.status = status;
-    this.receiverBankingInfo = receiverBankingInfo;
-  }
-
   public static String formatId(int number) {
     // Padding with leading zeros if necessary
     return String.format("f-%010d", number);
@@ -244,8 +232,8 @@ public class Claim implements ClaimProcessManager {
   }
 
   @Override
-  public void delete(String name) {
-    removeLineById(filePath, name);
+  public void delete(String id) {
+    removeLineById(filePath, id);
   }
 
   @Override
@@ -254,11 +242,12 @@ public class Claim implements ClaimProcessManager {
     message.append("Id: ").append(rowData.get(0)).append("\n");
     message.append("Claim Date: ").append(rowData.get(1)).append("\n");
     message.append("Insured Person: ").append(rowData.get(2)).append("\n");
-    message.append("Exam Date: ").append(rowData.get(3)).append("\n");
-    message.append("Documents: ").append(rowData.get(4)).append("\n");
-    message.append("Claim Amount: ").append(rowData.get(5)).append("\n");
-    message.append("Status: ").append(rowData.get(5)).append("\n");
-    message.append("Receiver Banking Info: ").append(rowData.get(5)).append("\n");
+    message.append("Card number: ").append(rowData.get(3)).append("\n");
+    message.append("Exam Date: ").append(rowData.get(4)).append("\n");
+    message.append("Documents: ").append(rowData.get(5)).append("\n");
+    message.append("Claim Amount: ").append(rowData.get(6)).append("\n");
+    message.append("Status: ").append(rowData.get(7)).append("\n");
+    message.append("Receiver Banking Info: ").append(rowData.get(8)).append("\n");
     return message.toString();
   }
 

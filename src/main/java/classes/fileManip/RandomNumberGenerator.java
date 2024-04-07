@@ -24,7 +24,7 @@ public class RandomNumberGenerator {
         return randomNumber;
     }
 
-    public static Set<String> readExistingNumbers(String fileName) {
+    private static Set<String> readExistingNumbers(String fileName) {
         Set<String> existingNumbers = new HashSet<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             String line;

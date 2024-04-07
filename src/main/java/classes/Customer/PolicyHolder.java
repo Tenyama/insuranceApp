@@ -17,24 +17,12 @@ public class PolicyHolder extends Customer{
     public PolicyHolder() throws IOException {
         super();
     }
-    public PolicyHolder(String fullName, InsuranceCard card, List<Claim> listOfClaims, List<Dependent> dependentList) throws IOException {
-        super(fullName, card, listOfClaims);
-        this.dependentList = dependentList;
-    }
-
-    public PolicyHolder(String fullName, InsuranceCard card, List<Dependent> dependentList) {
-        super(fullName, card);
-        this.dependentList = dependentList;
-    }
     public PolicyHolder(String id) {
         super(id);
     }
 
     public List<Dependent> getDependentList() {
         return dependentList;
-    }
-    public void addDependent(Dependent foo){
-        dependentList.add(foo);
     }
     public void addDependent(String foo) throws IOException {
         Dependent dummy = new Dependent(findIdByName(foo), this);

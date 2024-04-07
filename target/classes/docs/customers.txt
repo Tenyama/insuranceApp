@@ -13,4 +13,3 @@ id=c-0000012, fullName=Who again?, card=4047173845, listOfClaims=null, dependent
 id=c-0000013, fullName=Mortimer Doggington, card=7250515917, listOfClaims=null, dependentList=null, holder=null
 id=c-0000014, fullName=Brock Lee, card=4505087334, listOfClaims=null, dependentList=null, holder=null
 id=c-0000015, fullName=NutsFromBerk, card=9132909930, listOfClaims=null, dependentList=null, holder=null
-id=c-0000016, fullName=Hong Com, card=NONE, listOfClaims=[f-0000000003, f-0000000007, f-0000000009], dependentList=[c-0000005, c-0000006, c-0000015], holder=null

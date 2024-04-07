@@ -29,13 +29,6 @@ public class InsuranceCard {
     this.cardNumber = cardNumber;
   }
 
-  public InsuranceCard(Customer cardHolder, String policyOwner, LocalDate expirationDate) {
-    this.cardNumber = formatNumber(RandomNumberGenerator.randTen());
-    this.cardHolder = cardHolder;
-    this.policyOwner = policyOwner;
-    this.expirationDate = expirationDate;
-  }
-
   public static String formatNumber(long number) {
     // Padding with leading zeros if necessary
     return String.format("%010d", number);
@@ -84,10 +77,6 @@ public class InsuranceCard {
 
     public Builder () {
     }
-
-    ////////////////////////
-    //("Gotta add READER")//
-    ////////////////////////
 
     public Builder cardHolder(Customer cardHolder) {
       this.cardHolder = cardHolder;

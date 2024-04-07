@@ -5,6 +5,7 @@ package classes.Customer;
  */
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import classes.Claim;
@@ -18,22 +19,10 @@ public abstract class Customer {
   private String id;
   private String fullName;
   private InsuranceCard card;
-  private List<Claim> listOfClaims;
+  private List<Claim> listOfClaims = new ArrayList<>();
 
   public Customer() throws IOException {
     this.id = formatId(MaxIdFinder.getMaxCustomerId(filePath) + 1);
-  }
-
-  public Customer(String fullName, InsuranceCard card, List<Claim> listOfClaims) throws IOException {
-    this.id = formatId(MaxIdFinder.getMaxCustomerId(filePath) + 1);
-    this.fullName = fullName;
-    this.card = card;
-    this.listOfClaims = listOfClaims;
-  }
-
-  public Customer(String fullName, InsuranceCard card) {
-    this.fullName = fullName;
-    this.card = card;
   }
 
   public Customer(String id) {
@@ -63,14 +52,24 @@ public abstract class Customer {
     this.listOfClaims = listOfClaims;
   }
 
-  public void removeById(String id){
-    removeLineById(filePath, id);
+  public void addClaim(String claimId) throws IOException {
+    Claim dummy = new Claim.Builder().id(claimId).build();
+    this.listOfClaims.add(dummy);
+  }
+  private List<String> abbreviatedClaimList() {
+    List<String> dummy = new ArrayList<>();
+    if (listOfClaims != null) {
+      for (int i = 0; i < listOfClaims.size(); i++) {
+        dummy.add(listOfClaims.get(i).getId());
+      }
+    }
+    return dummy;
   }
   @Override
   public String toString() {
     return "id=" + id +
             ", fullName=" + fullName +
             ", card=" + (card == null? "null" : card.getCardNumber()) +
-            ", listOfClaims=" + listOfClaims ;
+            ", listOfClaims=" + abbreviatedClaimList() ;
   }
 }

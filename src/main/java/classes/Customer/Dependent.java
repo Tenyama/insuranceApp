@@ -12,18 +12,9 @@ import java.util.List;
 public class Dependent extends Customer{
     private PolicyHolder holder;
 
-    public Dependent(PolicyHolder holder) throws IOException {
-        super();
-        this.holder = holder;
-    }
     public Dependent(String holder) throws IOException {
         super();
         this.holder = new PolicyHolder(Utils.findIdByName(holder));
-    }
-
-    public Dependent(String fullName, InsuranceCard card, List<Claim> listOfClaims, PolicyHolder holder) throws IOException {
-        super(fullName, card, listOfClaims);
-        this.holder = holder;
     }
 
     public Dependent(String id, PolicyHolder holder) {
