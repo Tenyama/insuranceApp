@@ -74,13 +74,13 @@ public class AddClaim{
                 statusBox.addItem("DONE");
 
                 // Create labels for text boxes
-                Label claimDateLabel = new Label("Claim date:");
+                Label claimDateLabel = new Label("Claim date (default date is today):");
                 Label claimYearLabel = new Label("Year:");
                 Label claimMonthLabel = new Label("Month:");
                 Label claimDayLabel = new Label("Day:");
                 Label insuredPersonLabel = new Label("Full Name:");
                 Label cardLabel = new Label("Card:");
-                Label examDateLabel = new Label("Exam date:");
+                Label examDateLabel = new Label("Exam date (default date is today):");
                 Label examYearLabel = new Label("Year:");
                 Label examMonthLabel = new Label("Month:");
                 Label examDayLabel = new Label("Day:");
@@ -134,7 +134,7 @@ public class AddClaim{
                         } catch (IOException e) {
                             throw new RuntimeException(e);
                         }
-                        String input = TextInputDialog.showDialog(textGUI, "Documents", "Please enter the document name", "Initial content");
+                        String input = TextInputDialog.showDialog(textGUI, "Documents", "Please enter the document name", "HERE");
                         documents.add(dummy.getId() + "_" + cardBox.getSelectedItem() + "_" + input + ".pdf");
                     }
                 }));

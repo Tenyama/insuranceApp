@@ -53,7 +53,7 @@ public class AddCard {
                 // Create labels for text boxes
                 Label cardHolderLabel = new Label("Card Holder:");
                 Label policyOwnerLabel = new Label("Policy Owner:");
-                Label expDate = new Label("Please enter the Expiration Date");
+                Label expDate = new Label("Please enter the Expiration Date (default date is today)");
                 Label yearLabel = new Label("Year:");
                 Label monthLabel = new Label("Month:");
                 Label dayLabel = new Label("Day:");
