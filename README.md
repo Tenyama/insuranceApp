@@ -14,7 +14,14 @@ However the product is still at an early stage of development meaning there will
 - Requires Openjdk 21.0.2 and Apache Maven 3.9.6
 - To Install simply clone the repo.
   ``` git clone https://github.com/Tenyama/insuranceApp ```
-  
+
+## Running
+
+To run the project simply open a terminal in the repository and run
+```
+mvn exec:java
+```
+
 ---
   
 - Author: Le Thien Son - s3977955
